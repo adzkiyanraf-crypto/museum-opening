@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museum Opening</title>
 
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Container */
+.door-container{
+  position:relative;
+  width:300px;
+  height:400px;
+  perspective:1000px;
+  cursor:pointer;
+}
+
+/* Left Door */
+.door-left{
+  position:absolute;
+  width:50%;
+  height:100%;
+  background:#5c3a21;
+  left:0;
+  transform-origin:left;
+  transition:1.5s;
+}
+
+/* Right Door */
+.door-right{
+  position:absolute;
+  width:50%;
+  height:100%;
+  background:#5c3a21;
+  right:0;
+  transform-origin:right;
+  transition:1.5s;
+}
+
+/* Open animation */
+.open .door-left{
+  transform:rotateY(-110deg);
+}
+
+.open .door-right{
+  transform:rotateY(110deg);
+}
+</style>
+</head>
+
+<body>
+
+<div class="door-container" onclick="openDoor()">
+  <div class="door-left"></div>
+  <div class="door-right"></div>
+</div>
+
+<script>
+function openDoor(){
+  document.querySelector(".door-container").classList.add("open");
+
+  setTimeout(function(){
+    window.location.href = "about-us-2.html";
+  },1500);
+}
+</script>
+
+</body>
+</html>
