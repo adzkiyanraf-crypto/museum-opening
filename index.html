@@ -1,78 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Museum Opening</title>
+  <title>Museum Opening</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  background:#111;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
+    .door {
+      position: fixed;
+      width: 50%;
+      height: 100%;
+      top: 0;
+      background: #3b2a1a;
+      transition: transform 2s ease;
+      z-index: 2;
+    }
 
-/* Container */
-.door-container{
-  position:relative;
-  width:300px;
-  height:400px;
-  perspective:1000px;
-  cursor:pointer;
-}
+    .left {
+      left: 0;
+      border-right: 3px solid #1a120b;
+    }
 
-/* Left Door */
-.door-left{
-  position:absolute;
-  width:50%;
-  height:100%;
-  background:#5c3a21;
-  left:0;
-  transform-origin:left;
-  transition:1.5s;
-}
+    .right {
+      right: 0;
+      border-left: 3px solid #1a120b;
+    }
 
-/* Right Door */
-.door-right{
-  position:absolute;
-  width:50%;
-  height:100%;
-  background:#5c3a21;
-  right:0;
-  transform-origin:right;
-  transition:1.5s;
-}
+    .open .left {
+      transform: translateX(-100%);
+    }
 
-/* Open animation */
-.open .door-left{
-  transform:rotateY(-110deg);
-}
+    .open .right {
+      transform: translateX(100%);
+    }
 
-.open .door-right{
-  transform:rotateY(110deg);
-}
-</style>
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1544967082-d8e6a0f1d3c2') center/cover;
+    }
+
+    button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 3;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="door-container" onclick="openDoor()">
-  <div class="door-left"></div>
-  <div class="door-right"></div>
-</div>
+<div class="content"></div>
+
+<div class="door left"></div>
+<div class="door right"></div>
+
+<button onclick="openDoor()">Enter The Museum</button>
 
 <script>
-function openDoor(){
-  document.querySelector(".door-container").classList.add("open");
-
-  setTimeout(function(){
-    window.location.href = "about-us-2.html";
-  },1500);
-}
+  function openDoor() {
+    document.body.classList.add("open");
+    setTimeout(function() {
+      window.location.href = "about.html"; 
+    }, 2000);
+  }
 </script>
 
 </body>
